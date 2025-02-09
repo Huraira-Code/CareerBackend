@@ -24,6 +24,8 @@ app.post("/api/generate-advice", async (req, res) => {
 
     // Validate prompt input
     if (!prompt || prompt.trim() === "") {
+      console.log("Prompt cannot be empty");
+      
       return res.status(400).json({ error: "Prompt cannot be empty" });
     }
 
