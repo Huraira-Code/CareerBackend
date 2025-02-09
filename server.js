@@ -33,7 +33,7 @@ app.post("/api/generate-advice", async (req, res) => {
     const result = await model.generateContent([prompt]);
 
     // Ensure `response.text()` is handled correctly
-    const advice = await result.response.text();
+    const advice = await result.response.text().replace(/```html|```/g, '').trim();;
     res.json({ advice });
   } catch (error) {
     console.error("Error generating advice:", error.message);
